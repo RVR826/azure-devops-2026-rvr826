@@ -25,7 +25,7 @@ jobs:
     needs: build
     steps:
     - name: Test
-      run: dotnet test --verbosity normal
+      run: dotnet test Votex.sln --no-build --verbosity normal
 
   deploy:
     runs-on: ubuntu-latest
