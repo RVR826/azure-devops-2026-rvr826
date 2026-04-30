@@ -24,10 +24,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - name: Sanity Check
-      run: ls -R
+    - uses: actions/checkout@v4
     - name: Test
-      run: dotnet test Votex.sln --verbosity normal
+      run: dotnet test --verbosity normal
 
   deploy:
     runs-on: ubuntu-latest
