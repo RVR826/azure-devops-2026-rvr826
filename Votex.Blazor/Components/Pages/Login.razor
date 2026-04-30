@@ -1,0 +1,40 @@
+﻿@using Votex.Blazor.Services
+
+@page "/login"
+@inject NavigationManager NavManager
+@inject IUserAPIService API
+@inject Authenticator Authenticator
+
+<PageTitle>Login</PageTitle>
+
+<h2 class="mb-3 text-center">Login</h2>
+<div class="row" @onkeypress="OnKeypressTryLoginAsync">
+    <div class="col-sm-4 offset-sm-4">
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" @bind="RequestDto.Email" class="form-control" id="email" placeholder="Enter e-mail" />
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" @bind="RequestDto.Password" class="form-control" id="password" placeholder="Enter password" />
+        </div>
+        <div class="mb-3">
+            <div class="row">
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-primary" @onclick="TryLoginAsync">Login</button>
+                </div>
+                <div class="col-sm-8">
+                    <NavLink href="register">
+                        Don't have an account? Register!
+                    </NavLink>
+                </div>
+            </div>
+        </div>
+        @if (LoginError)
+        {
+            <div class="mb-3 text-danger">
+                Invalid e-mail or password!
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using Votex.Blazor.HubServices
+@using Votex.Blazor.Services
+
+@page "/results/{VotingId}"
+@inject NavigationManager NavManager
+@inject IVotingsAPIService API
+@inject Authenticator Authenticator
+@inject ResultsHubService HubService
+
+<PageTitle>Current Results</PageTitle>
+
+<AuthorizeView>
+    <Authorized>
+        <h2 class="mb-3">@RequestDto.Question</h2>
+        <h3 class="mb-3">All voters: @RequestDto.AllVotersCount / Voted: @AllVotesCount</h3>
+        <Grid @ref="resultsGrid"
+        TItem="(string option,int count)"
+        class="table table-bordered table-striped"
+        Data="VotingResultData"
+        Responsive="true">
+            <GridColumns>
+                <GridColumn TItem="(string option,int count)" Context="voting" HeaderText="Option">@voting.option</GridColumn>
+                <GridColumn TItem="(string option,int count)" Context="voting" HeaderText="Votes">@voting.count</GridColumn>
+                <GridColumn TItem="(string option,int count)" Context="voting" HeaderText="Percent">@(AllVotesCount > 0 ? Math.Round(100f * voting.count / AllVotesCount, 2) : 0) %</GridColumn>
+            </GridColumns>
+        </Grid>
+    </Authorized>
+</AuthorizeView>

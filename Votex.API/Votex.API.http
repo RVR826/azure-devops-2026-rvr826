@@ -1,0 +1,6 @@
+@Votex.API_HostAddress = http://localhost:5004
+
+GET {{Votex.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

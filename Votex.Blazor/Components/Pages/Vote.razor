@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using Votex.Blazor.Services
+
+@page "/vote/{VotingId}"
+@inject NavigationManager NavManager
+@inject IVotingsAPIService API
+@inject Authenticator Authenticator
+
+<PageTitle>Vote</PageTitle>
+
+<AuthorizeView>
+    <Authorized>
+        <div class="card shadow-sm mt-4 col-sm-6 offset-sm-3">
+            <div class="card-body">
+                <h4 class="card-title mb-4">@ResponseDto.Question</h4>
+                <InputRadioGroup @bind-Value="RequestDto.OptionId" Name="votingOptions">
+                    @foreach (var (id, text) in Options)
+                    {
+                        <div class="form-check mb-2">
+                            <InputRadio class="form-check-input" Value="id" />
+                            <label class="form-check-label">
+                                @text
+                            </label>
+                        </div>
+                    }
+                </InputRadioGroup>
+
+                <button class="btn btn-primary mt-3 mb-3" type="submit" @onclick="TryVote">Vote</button>
+
+                @if(VoteError)
+                {
+                    <p class="text-danger">Please select an option!</p>
+                }
+            </div>
+        </div>
+    </Authorized>
+</AuthorizeView>

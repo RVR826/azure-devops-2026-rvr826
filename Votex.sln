@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11723.189 insiders
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votex.API", "Votex.API\Votex.API.csproj", "{4062C531-2F51-41E8-963B-99D14668B7E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votex.DataAccess", "Votex.DataAccess\Votex.DataAccess.csproj", "{1A7496DF-0B18-43F3-8F18-87BBC512201F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votex.Blazor", "Votex.Blazor\Votex.Blazor.csproj", "{BBB6AD42-E3B1-4980-B6EB-DDC003E2392D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votex.IntegrationTest", "Votex.IntegrationTest\Votex.IntegrationTest.csproj", "{E780FB1B-4D2C-4F21-83F0-5DBA985894B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votex.Shared", "Votex.Shared\Votex.Shared.csproj", "{7FCDAD13-9001-4F9E-A65A-40369811DA69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4062C531-2F51-41E8-963B-99D14668B7E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4062C531-2F51-41E8-963B-99D14668B7E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4062C531-2F51-41E8-963B-99D14668B7E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4062C531-2F51-41E8-963B-99D14668B7E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A7496DF-0B18-43F3-8F18-87BBC512201F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A7496DF-0B18-43F3-8F18-87BBC512201F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A7496DF-0B18-43F3-8F18-87BBC512201F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A7496DF-0B18-43F3-8F18-87BBC512201F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBB6AD42-E3B1-4980-B6EB-DDC003E2392D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBB6AD42-E3B1-4980-B6EB-DDC003E2392D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBB6AD42-E3B1-4980-B6EB-DDC003E2392D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBB6AD42-E3B1-4980-B6EB-DDC003E2392D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E780FB1B-4D2C-4F21-83F0-5DBA985894B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E780FB1B-4D2C-4F21-83F0-5DBA985894B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E780FB1B-4D2C-4F21-83F0-5DBA985894B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E780FB1B-4D2C-4F21-83F0-5DBA985894B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FCDAD13-9001-4F9E-A65A-40369811DA69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FCDAD13-9001-4F9E-A65A-40369811DA69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FCDAD13-9001-4F9E-A65A-40369811DA69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FCDAD13-9001-4F9E-A65A-40369811DA69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99F4FA5F-56B5-431C-B613-2810FCB2BD19}
+	EndGlobalSection
+EndGlobal

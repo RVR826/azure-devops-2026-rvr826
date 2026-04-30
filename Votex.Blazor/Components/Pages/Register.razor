@@ -1,0 +1,31 @@
+﻿@using Votex.Blazor.Services
+
+@page "/register"
+@inject NavigationManager NavManager
+@inject IUserAPIService API
+
+<PageTitle>Register</PageTitle>
+
+<h2 class="mb-3 text-center">Register</h2>
+<div class="row" @onkeypress="OnKeypressTryRegisterAsync">
+    <div class="col-sm-4 offset-sm-4">
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" @bind="RequestDto.Email" class="form-control" id="email" placeholder="Enter e-mail" />
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" @bind="RequestDto.Password" class="form-control" id="password" placeholder="Enter password" />
+        </div>
+        <button type="submit" class="btn btn-primary mb-3" @onclick="TryRegisterAsync">Register</button>
+        @if (ErrorMessages.Count > 0)
+        {
+            <div class="mb-3 text-danger">
+                @foreach(var message in ErrorMessages)
+                {
+                    <p>@message</p>
+                }
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿@using Votex.Blazor.Models
+@using Votex.Blazor.Services
+@using Votex.Shared.DTO
+
+@page "/finished"
+@inject Authenticator Authenticator
+@inject IVotingsAPIService API
+@inject NavigationManager NavManager
+
+<PageTitle>Ended Votings</PageTitle>
+
+<AuthorizeView>
+    <Authorized>
+        <h2>Ended votings</h2>
+        <div class="row mb-3">
+            <div class="col-sm-4">
+                <label for="question" class="form-label">Filter by question</label>
+                <input id="question" type="text" class="form-control" placeholder="Start typing question" @bind=QuestionFilter />
+            </div>
+            <div class="col-sm-4">
+                <label for="start" class="form-label">Set start date</label>
+                <input id="start" type="datetime" class="form-control" @bind=StartFilter />
+            </div>
+            <div class="col-sm-4">
+                <label for="end" class="form-label">Set end date</label>
+                <input id="end " type="datetime" class="form-control" @bind=EndFilter />
+            </div>
+        </div>
+        <input type="button" class="btn btn-primary mb-3" value="Filter" @onclick="() => FilterVotings(QuestionFilter, StartFilter, EndFilter)" />
+        <Grid TItem="VotingListingRequestDto"
+              class="table table-bordered table-striped"
+              Data="FilteredRequestDtos"
+              AllowPaging="true"
+              PageSize="5"
+              Responsive="true">
+            <GridColumns>
+                <GridColumn TItem="VotingListingRequestDto" Context="voting" HeaderText="Question">@voting.Question</GridColumn>
+                <GridColumn TItem="VotingListingRequestDto" Context="voting" HeaderText="Start Date">@voting.StartDate</GridColumn>
+                <GridColumn TItem="VotingListingRequestDto" Context="voting" HeaderText="End Date">@voting.EndDate</GridColumn>
+                <GridColumn TItem="VotingListingRequestDto" Context="voting" HeaderText="Results">
+                    <input type="button" class="btn btn-primary" value="Results" @onclick="() => GoToResult(voting.Id)" />
+                </GridColumn>
+            </GridColumns>
+        </Grid>
+    </Authorized>
+</AuthorizeView>
+

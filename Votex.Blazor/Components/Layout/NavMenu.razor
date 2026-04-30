@@ -1,0 +1,54 @@
+﻿@using Votex.Blazor.Services;
+@inject Authenticator Authenticator 
+@inject NavigationManager NavManager
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <NavLink class="navbar-brand px-3" href="" Match="NavLinkMatch.All">
+        Votex
+    </NavLink>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    Home
+                </NavLink>
+            </li>
+            <AuthorizeView>
+                <Authorized>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="finished">
+                            Finished Votings
+                        </NavLink>
+                    </li>                   
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="create">
+                            Create Voting
+                        </NavLink>
+                    </li>
+                </Authorized>
+                <NotAuthorized>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="login">
+                            Login
+                        </NavLink>
+                    </li>           
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="register">
+                            Register
+                        </NavLink>
+                    </li>
+                </NotAuthorized>
+            </AuthorizeView>
+        </ul>
+    </div>
+    <AuthorizeView>
+        <Authorized>
+            <NavLink class="px-3" href="javascript:void(0)" @onclick="LogoutAsync">
+                Logout
+            </NavLink>
+        </Authorized>
+    </AuthorizeView>
+</nav>
