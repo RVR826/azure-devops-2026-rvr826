@@ -66,7 +66,7 @@ jobs:
         run: |
           az deployment group create \
             --resource-group ${{ secrets.AZURE_RESOURCE_GROUP_NAME }} \
-            --template-file infra/main.bicep \
+            --template-file Infrastructure/main.bicep \
             --parameters \
               sqlServerName=${{ secrets.SQL_SERVER_NAME }} \
               sqlAdminUser=${{ secrets.SQL_SERVER_ADMIN_USER }} \
