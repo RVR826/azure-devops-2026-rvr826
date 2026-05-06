@@ -5,6 +5,8 @@ param sqlAdminUser string
 param sqlAdminPassword string
 param databaseName string
 param appServiceName string
+param apiServiceName string
+param frontendServiceName string
 
 // SQL Server
 resource sqlServer 'Microsoft.Sql/servers@2022-05-01-preview' = {
@@ -38,21 +40,33 @@ resource allowAzure 'Microsoft.Sql/servers/firewallRules@2022-05-01-preview' = {
   }
 }
 
-// // App Service Plan
-// resource plan 'Microsoft.Web/serverfarms@2022-03-01' = {
-//   name: '${appServiceName}-plan'
-//   location: location
-//   sku: {
-//     name: 'B1'
-//     tier: 'Basic'
-//   }
-// }
+// App Service Plan (shared)
+resource plan 'Microsoft.Web/serverfarms@2022-03-01' = {
+  name: '${appServiceName}-plan'
+  location: resourceGroup().location
+  sku: {
+    name: 'B1'
+    tier: 'Basic'
+  }
+}
 
-// // Web App
-// resource app 'Microsoft.Web/sites@2022-03-01' = {
-//   name: appServiceName
-//   location: location
-//   properties: {
-//     serverFarmId: plan.id
-//   }
-// }
+// API Web App
+resource apiApp 'Microsoft.Web/sites@2022-03-01' = {
+  name: apiServiceName
+  location: resourceGroup().location
+  properties: {
+    serverFarmId: plan.id
+    siteConfig: {
+      appSettings: [
+        {
+          name: 'ConnectionStrings__DefaultConnection'
+          value: 'Server=tcp:${sqlServer.name}.database.windows.net,1433;Initial Catalog=${databaseName};User ID=${sqlAdminUser};Password=${sqlAdminPassword};Encrypt=True;'
+        }
+        {
+          name: 'ASPNETCORE_ENVIRONMENT'
+          value: 'Production'
+        }
+      ]
+    }
+  }
+}

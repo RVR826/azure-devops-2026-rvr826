@@ -76,6 +76,17 @@ namespace Votex.API
                 }});
             });
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowBlazor", policy =>
+                {
+                    policy
+                        .WithOrigins("https://localhost:7257") // your Blazor port
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -89,6 +100,7 @@ namespace Votex.API
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseCors("AllowBlazor");
 
             app.MapControllers();
             app.MapHub<ResultsHub>("/ResultsHub");
