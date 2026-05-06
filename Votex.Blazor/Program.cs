@@ -40,7 +40,7 @@ public class Program
 
         builder.Services.AddHttpClient(Microsoft.Extensions.Options.Options.DefaultName, options =>
         {
-            options.BaseAddress = new Uri("https://localhost:6969/");
+            options.BaseAddress = new Uri("https://votex-api.azurewebsites.net//");
         });
 
         builder.Services.AddScoped<IVotingsAPIService, VotingsAPIService>();
