@@ -83,6 +83,7 @@ jobs:
               databaseName=${{ secrets.SQL_SERVER_DATABASE }} \
               appServiceName=${{ secrets.APP_SERVICE_NAME }} \
               apiServiceName=${{ secrets.API_SERVICE_NAME }} \
+              jwtSecretKey=${{ secrets.API_JWT_SECRET_KEY }} \
               frontendServiceName=${{ secrets.FRONTEND_SERVICE_NAME }}
 
   deploy-api:

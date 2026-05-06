@@ -6,6 +6,8 @@ param sqlAdminPassword string
 param databaseName string
 param appServiceName string
 param apiServiceName string
+@secure()
+param jwtSecretKey string
 param frontendServiceName string
 
 // SQL Server
@@ -58,6 +60,10 @@ resource apiApp 'Microsoft.Web/sites@2022-03-01' = {
     serverFarmId: plan.id
     siteConfig: {
       appSettings: [
+        {
+          name: 'JwtSettings__SecretKey'
+          value: jwtSecretKey
+        }
         {
           name: 'ConnectionStrings__DefaultConnection'
           value: 'Server=tcp:${sqlServer.name}.database.windows.net,1433;Initial Catalog=${databaseName};User ID=${sqlAdminUser};Password=${sqlAdminPassword};Encrypt=True;'
