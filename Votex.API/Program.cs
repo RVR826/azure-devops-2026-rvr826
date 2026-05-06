@@ -101,14 +101,6 @@ namespace Votex.API
             app.MapControllers();
             app.MapHub<ResultsHub>("/ResultsHub");
 
-            using (var scope = app.Services.CreateScope())
-            {
-                var context = scope.ServiceProvider.GetRequiredService<VotexDbContext>();
-                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
-
-                //DbInitializer.Initialize(context, userManager);
-            }
-
             app.Run();
         }
     }

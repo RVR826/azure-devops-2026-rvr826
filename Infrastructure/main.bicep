@@ -77,6 +77,7 @@ resource apiApp 'Microsoft.Web/sites@2022-03-01' = {
   }
 }
 
+// Frontend Web App
 resource frontendApp 'Microsoft.Web/sites@2022-03-01' = {
   name: frontendServiceName
   location: resourceGroup().location
