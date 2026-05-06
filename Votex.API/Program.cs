@@ -106,7 +106,7 @@ namespace Votex.API
                 var context = scope.ServiceProvider.GetRequiredService<VotexDbContext>();
                 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
 
-                DbInitializer.Initialize(context, userManager);
+                //DbInitializer.Initialize(context, userManager);
             }
 
             app.Run();
