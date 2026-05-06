@@ -76,3 +76,19 @@ resource apiApp 'Microsoft.Web/sites@2022-03-01' = {
     }
   }
 }
+
+resource frontendApp 'Microsoft.Web/sites@2022-03-01' = {
+  name: frontendServiceName
+  location: resourceGroup().location
+  properties: {
+    serverFarmId: plan.id
+    siteConfig: {
+      appSettings: [
+        {
+          name: 'ASPNETCORE_ENVIRONMENT'
+          value: 'Production'
+        }
+      ]
+    }
+  }
+}

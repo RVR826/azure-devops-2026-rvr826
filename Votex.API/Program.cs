@@ -81,7 +81,7 @@ namespace Votex.API
                 options.AddPolicy("AllowBlazor", policy =>
                 {
                     policy
-                        .WithOrigins("https://localhost:7257") // your Blazor port
+                        .WithOrigins("https://localhost:7257", "https://votex-blazor.azurewebsites.net")
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });

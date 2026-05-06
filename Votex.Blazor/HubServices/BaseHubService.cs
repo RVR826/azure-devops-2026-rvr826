@@ -19,7 +19,7 @@ namespace Votex.Blazor.HubServices
 
         protected void InitHub(string hubName)
         {
-            var fullUri = new Uri(new Uri("https://localhost:6969/"), hubName);
+            var fullUri = new Uri(new Uri("https://votex-api.azurewebsites.net/"), hubName);
 
             _hubConnection = new HubConnectionBuilder()
                 .WithUrl(fullUri, options =>
