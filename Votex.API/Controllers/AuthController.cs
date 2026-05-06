@@ -18,6 +18,13 @@ namespace Votex.API.Controllers
             _userService = userService;
         }
 
+        [HttpGet]
+        [Route("ping")]
+        public async Task<IActionResult> Ping()
+        {
+            return Ok("Pong!");
+        }
+
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginRegisterRequestDto loginRequestDto)
@@ -66,7 +73,7 @@ namespace Votex.API.Controllers
 
         [HttpGet]
         [Route("users")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> Users()
         {
             var users = (await _userService.GetUsersAsync()).Select(x => x.Email).ToList();
