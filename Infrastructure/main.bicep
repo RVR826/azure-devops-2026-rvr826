@@ -73,6 +73,19 @@ resource apiApp 'Microsoft.Web/sites@2022-03-01' = {
           value: 'Production'
         }
       ]
+      ipSecurityRestrictions: [
+        {
+          ipAddress: 'AppService'
+          tag: 'ServiceTag'
+          action: 'Allow'
+          priority: 200
+          name: 'AllowAzureAppServices'
+        }
+        {
+          ipAddress: 'Any'
+          action: 'Deny'
+        }
+      ]
     }
   }
 }
