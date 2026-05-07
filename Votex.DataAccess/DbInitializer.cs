@@ -6,11 +6,16 @@ namespace Votex.DataAccess
 {
     public static class DbInitializer
     {
-        public static void Initialize(VotexDbContext context, UserManager<User> userManager)
+        public static void Migrate(VotexDbContext context)
         {
             // won't migrate if its an InMemory database
-            if(context.Database.IsRelational())
+            if (context.Database.IsRelational())
                 context.Database.Migrate();
+        }
+        
+        public static void Initialize(VotexDbContext context, UserManager<User> userManager)
+        {
+            Migrate(context);
 
             if (context.Users.Any())
                 return;
