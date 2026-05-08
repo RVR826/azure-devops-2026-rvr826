@@ -18,13 +18,6 @@ namespace Votex.API.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
-        [Route("ping")]
-        public async Task<IActionResult> Ping()
-        {
-            return Ok("Pong!");
-        }
-
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginRegisterRequestDto loginRequestDto)
